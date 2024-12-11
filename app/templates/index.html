@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Локомотиви</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
+        i {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Назва проекту: Lab8</h1>
+    <i>ПІБ студента: Осадчий Денис Сергійович, група: ІПЗ-22010бск</i>
+
+    <h2>Brigades</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for brigade in brigades %}
+            <tr>
+                <td>{{ brigade.id }}</td>
+                <td>{{ brigade.phone_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Locomotives</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Registration Number</th>
+                <th>Depot</th>
+                <th>Type</th>
+                <th>Manufacture Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for locomotive in locomotives %}
+            <tr>
+                <td>{{ locomotive.registration_number }}</td>
+                <td>{{ locomotive.depot }}</td>
+                <td>{{ locomotive.locomotive_type }}</td>
+                <td>{{ locomotive.manufacture_year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Workers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Brigade</th>
+                <th>Leader</th>
+                <th>Birth Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for worker in workers %}
+            <tr>
+                <td>{{ worker.worker_id }}</td>
+                <td>{{ worker.last_name }}</td>
+                <td>{{ worker.first_name }}</td>
+                <td>{{ worker.middle_name }}</td>
+                <td>{{ worker.brigade.phone_number }}</td>
+                <td>{{ worker.is_leader }}</td>
+                <td>{{ worker.birth_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Repairs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Locomotive</th>
+                <th>Type</th>
+                <th>Start Date</th>
+                <th>Repair Days</th>
+                <th>Daily Cost</th>
+                <th>Brigade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for repair in repairs %}
+            <tr>
+                <td>{{ repair.repair_id }}</td>
+                <td>{{ repair.locomotive.registration_number }}</td>
+                <td>{{ repair.repair_type }}</td>
+                <td>{{ repair.start_date }}</td>
+                <td>{{ repair.repair_days }}</td>
+                <td>{{ repair.daily_cost }}</td>
+                <td>{{ repair.brigade.phone_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
